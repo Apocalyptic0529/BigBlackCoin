@@ -1,0 +1,184 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: hsl(0, 0%, 4%);
+  --foreground: hsl(0, 0%, 98%);
+  --muted: hsl(0, 0%, 16%);
+  --muted-foreground: hsl(0, 0%, 65%);
+  --popover: hsl(0, 0%, 4%);
+  --popover-foreground: hsl(0, 0%, 98%);
+  --card: hsl(0, 0%, 10%);
+  --card-foreground: hsl(0, 0%, 98%);
+  --border: hsl(16, 100%, 59%);
+  --input: hsl(0, 0%, 16%);
+  --primary: hsl(16, 100%, 59%);
+  --primary-foreground: hsl(0, 0%, 4%);
+  --secondary: hsl(0, 0%, 16%);
+  --secondary-foreground: hsl(0, 0%, 98%);
+  --accent: hsl(16, 100%, 59%);
+  --accent-foreground: hsl(0, 0%, 4%);
+  --destructive: hsl(0, 84%, 60%);
+  --destructive-foreground: hsl(0, 0%, 98%);
+  --ring: hsl(16, 100%, 59%);
+  --radius: 0.75rem;
+  
+  /* Casino-specific colors */
+  --casino-black: hsl(0, 0%, 4%);
+  --casino-dark: hsl(0, 0%, 10%);
+  --casino-gray: hsl(0, 0%, 16%);
+  --casino-light-gray: hsl(0, 0%, 23%);
+  --casino-orange: hsl(16, 100%, 59%);
+  --casino-orange-light: hsl(16, 100%, 62%);
+  --casino-orange-accent: hsl(35, 100%, 64%);
+  --casino-gold: hsl(35, 100%, 50%);
+}
+
+.dark {
+  --background: hsl(0, 0%, 4%);
+  --foreground: hsl(0, 0%, 98%);
+  --muted: hsl(0, 0%, 16%);
+  --muted-foreground: hsl(0, 0%, 65%);
+  --popover: hsl(0, 0%, 4%);
+  --popover-foreground: hsl(0, 0%, 98%);
+  --card: hsl(0, 0%, 10%);
+  --card-foreground: hsl(0, 0%, 98%);
+  --border: hsl(16, 100%, 59%);
+  --input: hsl(0, 0%, 16%);
+  --primary: hsl(16, 100%, 59%);
+  --primary-foreground: hsl(0, 0%, 4%);
+  --secondary: hsl(0, 0%, 16%);
+  --secondary-foreground: hsl(0, 0%, 98%);
+  --accent: hsl(16, 100%, 59%);
+  --accent-foreground: hsl(0, 0%, 4%);
+  --destructive: hsl(0, 62%, 31%);
+  --destructive-foreground: hsl(0, 0%, 98%);
+  --ring: hsl(16, 100%, 59%);
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-sans antialiased bg-background text-foreground;
+    background: var(--casino-black);
+    color: var(--foreground);
+    font-family: 'Inter', sans-serif;
+  }
+}
+
+@layer utilities {
+  .glow-orange {
+    box-shadow: 0 0 20px hsla(16, 100%, 59%, 0.5);
+  }
+  
+  .glow-orange-strong {
+    box-shadow: 0 0 30px hsla(16, 100%, 59%, 0.8);
+  }
+  
+  .text-glow {
+    text-shadow: 0 0 10px hsla(16, 100%, 59%, 0.8);
+  }
+  
+  .bg-gradient-casino {
+    background: linear-gradient(135deg, var(--casino-black) 0%, var(--casino-dark) 50%, var(--casino-gray) 100%);
+  }
+  
+  .bg-gradient-orange {
+    background: linear-gradient(135deg, var(--casino-orange) 0%, var(--casino-orange-light) 100%);
+  }
+  
+  .hover-glow:hover {
+    box-shadow: 0 0 25px hsla(16, 100%, 59%, 0.6);
+    transform: translateY(-2px);
+    transition: all 0.3s ease;
+  }
+  
+  .casino-black {
+    background-color: var(--casino-black);
+  }
+  
+  .casino-dark {
+    background-color: var(--casino-dark);
+  }
+  
+  .casino-gray {
+    background-color: var(--casino-gray);
+  }
+  
+  .casino-light-gray {
+    background-color: var(--casino-light-gray);
+  }
+  
+  .casino-orange {
+    color: var(--casino-orange);
+  }
+  
+  .bg-casino-orange {
+    background-color: var(--casino-orange);
+  }
+  
+  .casino-orange-light {
+    color: var(--casino-orange-light);
+  }
+  
+  .casino-orange-accent {
+    color: var(--casino-orange-accent);
+  }
+  
+  .casino-gold {
+    color: var(--casino-gold);
+  }
+  
+  .bg-casino-gold {
+    background-color: var(--casino-gold);
+  }
+  
+  .text-casino-black {
+    color: var(--casino-black);
+  }
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;500;600;700&family=Rajdhani:wght@400;500;600;700&display=swap');
+
+.font-orbitron {
+  font-family: 'Orbitron', monospace;
+}
+
+.font-rajdhani {
+  font-family: 'Rajdhani', sans-serif;
+}
+
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes bounce-slow {
+  0%, 20%, 53%, 80%, 100% {
+    animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+    transform: translate3d(0,0,0);
+  }
+  40%, 43% {
+    animation-timing-function: cubic-bezier(0.755, 0.050, 0.855, 0.060);
+    transform: translate3d(0, -30px, 0);
+  }
+  70% {
+    animation-timing-function: cubic-bezier(0.755, 0.050, 0.855, 0.060);
+    transform: translate3d(0, -15px, 0);
+  }
+  90% {
+    transform: translate3d(0,-4px,0);
+  }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 3s linear infinite;
+}
+
+.animate-bounce-slow {
+  animation: bounce-slow 3s infinite;
+}
