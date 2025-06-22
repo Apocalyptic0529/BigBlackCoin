@@ -1,0 +1,178 @@
+🔐 Admin Panel Development Prompt for BigBlackCoin e-Casino
+Develop the Admin Panel for the BigBlackCoin ($BBC) e-casino platform. This interface is accessible only to authorized admins and is used to monitor, manage, and moderate users and financial activities (deposits, withdrawals, account status).
+
+🎨 Theme:
+Design with a black-orange color palette to match the e-casino branding.
+
+Use a clean, table-based layout for management tools and clear visual status indicators (color-coded badges for "Pending", "Approved", "Rejected", etc.).
+
+👮 Admin Authentication
+Create a login page for admin access.
+
+Use static credentials:
+
+username: admin
+
+password: admin1234
+
+Redirect to the admin dashboard upon successful login.
+
+🧰 Admin Dashboard: Modules
+1. User Management (CRUD)
+List all registered users in a table format.
+
+Allow Create, Read, Update, and Delete operations:
+
+Create: Add new users (username, balance, status).
+
+Read: View user data (username, wallet balance, $BBC tokens, activity log).
+
+Update: Modify balance, status (Active, Suspended, Banned).
+
+Delete: Remove users from the system.
+
+Status Control:
+
+Toggle buttons or dropdown to Suspend, Ban, or Reactivate users.
+
+Banned/Suspended users should not be able to log in or play games.
+
+2. Deposit Requests
+View all user-submitted deposit requests, each with:
+
+Username
+
+Amount
+
+Uploaded receipt image
+
+Timestamp
+
+Status: Pending, Approved, or Rejected
+
+Admin Actions:
+
+Approve: Add the requested amount to the user’s wallet.
+
+Reject: Mark the request as rejected and notify the user.
+
+Include a "View receipt" button to open the uploaded image in a modal or new tab.
+
+Include search/filter by status, username, or date range.
+
+3. Withdrawal Requests
+Similar to deposit module, show:
+
+Username
+
+Amount (in coins or $BBC)
+
+Wallet details (optional)
+
+Timestamp
+
+Status: Pending, Approved, Rejected
+
+Admin Actions:
+
+Approve: Deduct amount from user’s balance and mark as paid.
+
+Reject: Cancel the withdrawal and optionally provide reason.
+
+Filter/search tools included.
+
+4. Game Bank and Platform Stats
+View real-time statistics:
+
+Total active users
+
+Total coin balance across users
+
+Total $BBC tokens in circulation
+
+$BBC Jackpot pool amount
+
+Number of deposits/withdrawals (pending/processed)
+
+Game-wise activity logs (number of plays per game)
+
+Display charts/graphs for quick analysis (optional enhancement).
+
+5. Audit Logs
+Record and display all admin actions:
+
+User bans/suspensions
+
+Approved/rejected deposits and withdrawals
+
+Manual balance edits
+
+Logs should include:
+
+Action performed
+
+Admin username
+
+Timestamp
+
+Target user (if any)
+
+🗃️ Database Requirements
+Use MySQL (via XAMPP) with tables such as:
+
+admins (id, username, password_hash)
+
+users (id, username, password, balance, status, $bbc_token)
+
+deposits (id, user_id, amount, receipt_image, status, timestamp)
+
+withdrawals (id, user_id, amount, status, timestamp)
+
+admin_logs (id, admin_id, action, target_user_id, timestamp)
+
+gamebank_stats (jackpot_pool, total_tokens_distributed, etc.)
+
+🔗 API (RESTful)
+Create secure RESTful endpoints for all admin operations:
+
+GET /admin/users
+
+PUT /admin/users/:id (status update, balance change)
+
+POST /admin/users (create user)
+
+DELETE /admin/users/:id
+
+GET /admin/deposits
+
+POST /admin/deposits/:id/approve
+
+POST /admin/deposits/:id/reject
+
+GET /admin/withdrawals
+
+POST /admin/withdrawals/:id/approve
+
+POST /admin/withdrawals/:id/reject
+
+GET /admin/logs
+
+GET /admin/stats
+
+Use token/session-based verification to secure these endpoints.
+
+🧪 Testing
+All operations must reflect in the database instantly.
+
+Admin actions should update user statuses in real time.
+
+Invalid/duplicate actions (e.g., double approving) should be handled gracefully.
+
+📦 Project Integration
+All admin features must be included in the same codebase.
+
+Ensure that both user-facing and admin-facing parts work locally using:
+
+Visual Studio Code for editing
+
+Localhost testing
