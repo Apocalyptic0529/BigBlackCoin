@@ -122,19 +122,7 @@ export default function Login() {
               </TabsList>
               
               <TabsContent value="login">
-                <div className="mb-4 p-3 bg-casino-dark/50 border border-casino-orange/20 rounded-lg">
-                  <p className="text-sm casino-orange-accent mb-2">Demo Accounts:</p>
-                  <div className="space-y-1 text-xs">
-                    <div className="flex justify-between">
-                      <span className="casino-orange-accent">Admin:</span>
-                      <span className="casino-orange">admin / admin1234</span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span className="casino-orange-accent">Player:</span>
-                      <span className="casino-orange">player1 / password123</span>
-                    </div>
-                  </div>
-                </div>
+                
                 
                 <form onSubmit={handleLogin} className="space-y-4">
                   <div>
@@ -145,7 +133,7 @@ export default function Login() {
                       type="text"
                       required
                       className="casino-gray border-casino-orange/30 text-white focus:border-casino-orange"
-                      placeholder="Enter username (try: player1)"
+                      placeholder="Enter username"
                     />
                   </div>
                   <div>
@@ -156,7 +144,7 @@ export default function Login() {
                       type="password"
                       required
                       className="casino-gray border-casino-orange/30 text-white focus:border-casino-orange"
-                      placeholder="Enter password (try: password123)"
+                      placeholder="Enter password"
                     />
                   </div>
                   <Button
@@ -168,72 +156,7 @@ export default function Login() {
                   </Button>
                 </form>
                 
-                <div className="mt-4 space-y-2">
-                  <Button
-                    type="button"
-                    onClick={async () => {
-                      setIsLoading(true);
-                      try {
-                        const response = await apiRequest("POST", "/api/auth/login", {
-                          username: "player1",
-                          password: "password123",
-                        });
-                        const userData = await response.json();
-                        login(userData);
-                        setLocation("/");
-                        toast({
-                          title: "Welcome back!",
-                          description: `Logged in as ${userData.username}`,
-                        });
-                      } catch (error: any) {
-                        toast({
-                          title: "Login failed",
-                          description: error.message || "Invalid credentials",
-                          variant: "destructive",
-                        });
-                      } finally {
-                        setIsLoading(false);
-                      }
-                    }}
-                    variant="outline"
-                    disabled={isLoading}
-                    className="w-full casino-gray border-casino-orange/30 text-casino-orange hover:bg-casino-orange hover:text-casino-black"
-                  >
-                    {isLoading ? "Logging in..." : "Quick Login: Player Demo"}
-                  </Button>
-                  <Button
-                    type="button"
-                    onClick={async () => {
-                      setIsLoading(true);
-                      try {
-                        const response = await apiRequest("POST", "/api/auth/login", {
-                          username: "admin",
-                          password: "admin1234",
-                        });
-                        const userData = await response.json();
-                        login(userData);
-                        setLocation("/");
-                        toast({
-                          title: "Welcome back!",
-                          description: `Logged in as ${userData.username}`,
-                        });
-                      } catch (error: any) {
-                        toast({
-                          title: "Login failed",
-                          description: error.message || "Invalid credentials",
-                          variant: "destructive",
-                        });
-                      } finally {
-                        setIsLoading(false);
-                      }
-                    }}
-                    variant="outline"
-                    disabled={isLoading}
-                    className="w-full casino-gray border-casino-orange/30 text-casino-orange hover:bg-casino-orange hover:text-casino-black"
-                  >
-                    {isLoading ? "Logging in..." : "Quick Login: Admin Demo"}
-                  </Button>
-                </div>
+                
               </TabsContent>
               
               <TabsContent value="register">
